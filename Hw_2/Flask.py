@@ -13,8 +13,8 @@ def hello_world():
 
 @app.route("/avr_data")
 def get_avr_data():
-    inc_to_cm = 2.54
-    pound_to_kg = 0.45
+    INC_TO_CM = 2.54
+    POUND_TO_KG = 0.45
     height_lst = []
     weight_lst = []
     with open('hw.csv', newline='') as csv_file:
@@ -22,8 +22,8 @@ def get_avr_data():
         for row in reader:
             height_lst.append(float(row[' "Height(Inches)"']))
             weight_lst.append(float(row[' "Weight(Pounds)"']))
-    avr_height = (sum(height_lst) * inc_to_cm) / len(height_lst)
-    avr_weight = (sum(weight_lst) * pound_to_kg) / len(weight_lst)
+    avr_height = (sum(height_lst) * INC_TO_CM) / len(height_lst)
+    avr_weight = (sum(weight_lst) * POUND_TO_KG) / len(weight_lst)
     return "Is average height:" + str(avr_height) + "<br/g> Is average weight: " + str(avr_weight)
 
 
