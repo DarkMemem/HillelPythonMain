@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask
 import csv
 from faker import Faker
 import json
@@ -20,7 +20,6 @@ def get_avr_data():
     with open('hw.csv', newline='') as csv_file:
         reader = csv.DictReader(csv_file, delimiter=',')
         for row in reader:
-            print(row[' "Height(Inches)"'], row[' "Weight(Pounds)"'])
             height_lst.append(float(row[' "Height(Inches)"']))
             weight_lst.append(float(row[' "Weight(Pounds)"']))
     avr_height = (sum(height_lst) * inc_to_cm) / len(height_lst)
