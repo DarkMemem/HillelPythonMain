@@ -2,26 +2,13 @@ import random
 import string
 
 
-def generate_password(length):
-    low_upp = string.ascii_lowercase + string.ascii_uppercase
-    return ''.join(random.sample(low_upp, k=length))
+def generate_password(length, specials, digits):
+    base_random = string.ascii_lowercase
+    if specials == 1:
+        base_random += string.punctuation
 
+    if digits == 1:
+        base_random += string.digits
 
-def generate_password_specials(length):
-    letters_and_specials = string.ascii_letters + string.digitspup
-    rand_string = ''.join(random.sample(letters_and_specials, k=length))
-    return rand_string
-
-
-def generate_password_digits(length):
-    symbol = '!"№;%:?*$()_+'
-    letters_and_digits_specials = string.ascii_letters + symbol
-    rand_string = ''.join(random.sample(letters_and_digits_specials, k=length))
-    return rand_string
-
-
-def generate_password_specials_digits(length):
-    symbol = '!"№;%:?*$()_+'
-    letters_and_digits = string.ascii_letters + string.digits + symbol
-    rand_string = ''.join(random.sample(letters_and_digits, k=length))
-    return rand_string
+    password = ''.join(random.sample(base_random, length))
+    return password
