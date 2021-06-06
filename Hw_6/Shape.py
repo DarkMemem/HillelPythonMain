@@ -1,32 +1,31 @@
 class Shape:
-
-    def __init__(self, center_x=0, center_y=0):
-        self.center_x = center_x
-        self.center_y = center_y
-
-
-class Point:
-
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
 
-class Circle(Shape, Point):
+class Point(Shape):
+    pass
 
-    def xy(self, center_x, center_y, r, x, y):
-        super().__init__(center_x, center_y)
+
+class Circle(Shape):
+    def __init__(self, x, y, radius):
         super().__init__(x, y)
+        self.radius = radius
 
-    @property
-    def contains(self):
-        if (Point.x - Shape.center_x) * (Point.x1 - center_x) + (Point.y - center_y) * (Point.y - center_y) <= r * r:
+    def contains(self, clazz):
+        center = []
+        radius = []
+        for i in self.__dict__.values():
+            center.append(i)
+        for i in clazz.__dict__.values():
+            radius.append(i)
+        if (radius[0] - center[0]) ** 2 + (radius[1] - center[1]) ** 2 <= center[2] * center[2]:
             return True
         else:
             return False
 
 
 p = Point(1, 42)
-
 c = Circle(0, 0, 10)
-print(c.contains)
+print(c.contains(p))
